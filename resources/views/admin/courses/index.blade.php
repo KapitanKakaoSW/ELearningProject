@@ -2,23 +2,25 @@
 
 @section('content')
     <div class="container">
-        <h1>Редактирование курсов</h1>
+        <h1>Edit courses</h1>
 
         <div class="mb-3">
-            <a href="#" class="btn btn-primary">Добавить новый курс</a>  {{-- Ссылка пока пустая --}}
+            <a href="#" class="btn btn-primary">course add</a>  {{-- Ссылка пока пустая --}}
+            <a href="{{ route('home') }}" class = "btn btn-secondary">back</a>
         </div>
 
+
         @if($courses->isEmpty())
-            <p>Курсы не найдены.</p>
+            <p>gar nix.</p>
         @else
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Название</th>
-                    <th>Описание</th>
-                    <th>Категория</th>
-                    <th>Действия</th>
+                    <th>Title</th>
+                    <th>desc</th>
+                    <th>category</th>
+                    <th>actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,11 +31,11 @@
                         <td>{{ $course->description }}</td>
                         <td>{{ $course->category }}</td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-sm">Редактировать</a> {{-- Ссылка на редактирование --}}
+                            <a href="#" class="btn btn-warning btn-sm">edit</a> {{-- Ссылка на редактирование --}}
                             <form action="#" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                                <button type="submit" class="btn btn-danger btn-sm">delete</button>
                             </form>
                         </td>
                     </tr>
