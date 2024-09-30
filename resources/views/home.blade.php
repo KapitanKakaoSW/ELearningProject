@@ -6,7 +6,7 @@
 
         @if(auth()->user()->role === 'admin')
             <h2>Admin panel</h2>
-            <a href="#">Edit courses</a> <!-- Здесь будут ссылки для админа -->
+            <a href="{{ route('admin.courses.index') }}">Edit courses</a>
         @else
             <h2>List of courses</h2>
             <ul>

@@ -7,7 +7,6 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 class Kernel extends HttpKernel {
 
     protected $middleware = [
-        // Пример глобальных посредников
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
     ];
@@ -25,7 +24,7 @@ class Kernel extends HttpKernel {
     ];
 
     protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'admin' => \App\Http\Middleware\AdminMiddleware::class, // Добавляем свой посредник
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
     ];
 }

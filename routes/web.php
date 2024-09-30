@@ -1,18 +1,23 @@
 <?php
 
+use App\Http\Controllers\CourseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/test-admin', function () {
+    return 'Admin middleware works!';
+})->middleware('admin');
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth', 'admin']], function() {
-    Route::get('/courses/edit', [CourseController::class, 'edit'])->name('courses.edit');
-    Route::post('/courses/update', [CourseController::class, 'update'])->name('courses.update');
+Route::middleware(['admin'])->group(function () {
+    Log::info('Middleware group triggered');
+    Route::get('/admin/courses', [CourseController::class, 'index'])->name('admin.courses.index');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
