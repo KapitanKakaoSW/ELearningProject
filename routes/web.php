@@ -11,6 +11,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/courses/create', [CourseController::class, 'addcourse'])->name('admin.courses.addcourse');
+    Route::post('/admin/courses', [CourseController::class, 'store'])->name('courses.store');
     Route::get('/admin/courses', [CourseController::class, 'index'])->name('admin.courses.index');
 });
 

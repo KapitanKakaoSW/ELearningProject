@@ -5,10 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Log;
 
-class AdminMiddleware
-{
-    public function handle($request, Closure $next)
-    {
+class AdminMiddleware {
+    public function handle($request, Closure $next) {
         Log::info('AdminMiddleware invoked');
 
         if (auth()->check() && auth()->user()->role === 'admin') {

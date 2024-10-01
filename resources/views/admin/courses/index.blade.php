@@ -5,12 +5,16 @@
         <h1>Edit courses</h1>
 
         <div class="mb-3">
-            <a href="#" class="btn btn-primary">course add</a>  {{-- Ссылка пока пустая --}}
             <a href="{{ route('home') }}" class = "btn btn-secondary">back</a>
         </div>
 
+    @can('admin')
+            <a href="{{ route('admin.courses.addcourse') }}" class="btn btn-primary">course add</a>
+        @else
+            <p>У вас нет прав для добавления курсов.</p>
+        @endcan
 
-        @if($courses->isEmpty())
+    @if($courses->isEmpty())
             <p>gar nix.</p>
         @else
             <table class="table table-bordered">
