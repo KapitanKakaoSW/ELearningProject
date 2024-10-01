@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Добавить новый курс</h1>
+        <h1>Course add</h1>
 
         {{-- Проверка, является ли пользователь администратором --}}
         @can('admin')
@@ -10,24 +10,24 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="title">Название курса:</label>
+                    <label for="title">title:</label>
                     <input type="text" name="title" id="title" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Описание:</label>
+                    <label for="description">desc:</label>
                     <textarea name="description" id="description" class="form-control" rows="5"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="category">Категория:</label>
+                    <label for="category">category:</label>
                     <input type="text" name="category" id="category" class="form-control">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Добавить курс</button>
+                <button type="submit" class="btn btn-primary">submit</button>
             </form>
         @else
-            <p>У вас нет прав для добавления курсов.</p>
+            <p>darf nicht.</p>
         @endcan
 
     </div>
