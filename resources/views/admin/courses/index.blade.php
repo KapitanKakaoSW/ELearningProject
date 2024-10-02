@@ -35,8 +35,8 @@
                         <td>{{ $course->description }}</td>
                         <td>{{ $course->category }}</td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-sm">edit</a> {{-- Ссылка на редактирование --}}
-                            <form action="#" method="POST" style="display:inline;">
+                            <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning btn-sm">edit</a>
+                            <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">delete</button>
@@ -45,6 +45,11 @@
                     </tr>
                 @endforeach
                 </tbody>
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
             </table>
         @endif
     </div>

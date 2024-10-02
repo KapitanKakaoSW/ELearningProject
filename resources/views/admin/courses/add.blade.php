@@ -4,7 +4,10 @@
     <div class="container">
         <h1>Course add</h1>
 
-        {{-- Проверка, является ли пользователь администратором --}}
+        <div class="mb-3">
+            <a href="{{ route('admin.courses.addcourse') }}" class = "btn btn-secondary">back</a>
+        </div>
+
         @can('admin')
             <form action="{{ route('courses.store') }}" method="POST">
                 @csrf
