@@ -6,6 +6,7 @@
     <title>Startseite</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
@@ -14,6 +15,7 @@
         @guest
             <a href="{{ route('login') }}" class="btn btn-primary mx-2">Einloggen</a>
             <a href="{{ route('register') }}" class="btn btn-secondary mx-2">Registrieren</a>
+            <a href="{{ route('home') }}" class="btn btn-outline-dark mx-2">Weiterhin als Gast</a>
         @else
             <div class="dropdown d-inline-block">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">

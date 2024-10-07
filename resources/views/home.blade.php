@@ -2,13 +2,19 @@
 
 @section('content')
     <div class="container">
-        <h1>Hallo, {{ auth()->user()->name }}!</h1>
+        <h1>Hallo, {{ auth()->user()->name ?? 'guest' }}!</h1>
 
-        @if(auth()->user()->role === 'admin')
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if(auth()->check() && auth()->user()->role === 'admin')
             <h2>Admin panel</h2>
             <a href="{{ route('admin.courses.index') }}">Edit courses</a>
         @else
-            @if($courses->isEmpty())
+        @if($courses->isEmpty())
                 <p>gar nix.</p>
             @else
                 <table class="table table-bordered">
@@ -29,7 +35,7 @@
                             <td>{{ $course->description }}</td>
                             <td>{{ $course->category }}</td>
                             <td>
-                                <a href="#" class="btn btn-primary btn-sm">anmelden</a>
+                                <a href="{{ route('courses.contact', $course->id) }}" class="btn btn-primary btn-sm">anmelden</a>
                             </td>
                         </tr>
                     @endforeach

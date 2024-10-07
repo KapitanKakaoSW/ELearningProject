@@ -16,5 +16,4 @@ class UserController extends Controller {
         }
         return redirect()->back()->with('error', 'Пользователь не найден.');
     }
-
 }
